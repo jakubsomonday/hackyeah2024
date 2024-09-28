@@ -1,37 +1,45 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import "./App.css";
-import mondaySdk from "monday-sdk-js";
-//Explore more Monday React Components here: https://style.monday.com/
+import "./App.scss";
+import ContentSection from "./ContentSection.tsx";
+import HeroSection from "./HeroSection.tsx";
+import Navbar from "./Navbar.tsx";
+import NGOTable from "./NGOTable.tsx";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Portal from "./Portal.tsx";
 
-// Usage of mondaySDK example, for more information visit here: https://developer.monday.com/apps/docs/introduction-to-the-sdk/
-const monday = mondaySdk();
 
-const App = () => {
-  const [context, setContext] = useState();
-
-  useEffect(() => {
-    // Notice this method notifies the monday platform that user gains a first value in an app.
-    // Read more about it here: https://developer.monday.com/apps/docs/mondayexecute#value-created-for-user/
-    monday.execute("valueCreatedForUser");
-
-    // TODO: set up event listeners, Here`s an example, read more here: https://developer.monday.com/apps/docs/mondaylisten/
-    monday.listen("context", (res) => {
-      setContext(res.data as any);
-    });
-  }, []);
-
-  //Some example what you can do with context, read more here: https://developer.monday.com/apps/docs/mondayget#requesting-context-and-settings-data
-  const attentionBoxText = `Hello, your user_id is: ${
-    context ? context?.user?.id : "still loading"
-  }.
-  Let's start building your amazing app, which will change the world!`;
-
-  return (
-    <div className="App">
-      <div>{attentionBoxText}</div>
+const MainSections = () => {
+    return (
+    <div>
+      <HeroSection />
+      <ContentSection />
     </div>
   );
+}
+
+const App = () => {
+
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        {/* Define Routes for different components */}
+        <Route path="/" element={<MainSections />} />
+        <Route path="/support" element={<ContentSection />} />
+        <Route path="/portal" element={<Portal />} />
+        {/* Catch-all route for 404 Not Found */}
+        <Route path="*" element={<h2>Page Not Found</h2>} />
+      </Routes>
+    </Router>
+  );
+  // return (
+  //   <div>
+  //     <Navbar />
+  //     <HeroSection />
+  //     <ContentSection />
+  //     <NGOTable />
+  //   </div>
+  // );
 };
 
 export default App;
