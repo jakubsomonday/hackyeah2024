@@ -3,7 +3,6 @@ import "./App.scss";
 import ContentSection from "./ContentSection.tsx";
 import HeroSection from "./HeroSection.tsx";
 import Navbar from "./Navbar.tsx";
-import NGOTable from "./NGOTable.tsx";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Portal from "./Portal.tsx";
 
