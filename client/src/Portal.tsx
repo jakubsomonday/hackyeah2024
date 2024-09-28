@@ -1,5 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import SuggestionBox from './SuggestionBox.tsx';
+import ProjectStatus from './ProjectStatus.tsx';
+import LineChart from './Chart.tsx';
+
+const currentProjects = [
+    {
+        name: 'Project 1',
+        progress: 50,
+        deadline: '2022-03-31',
+        status: 'On Track',
+        statusText: 'Wszytko ok',
+    },
+    {
+        name: 'Project 2',
+        progress: 100,
+        deadline: '2022-04-15',
+        status: 'On Track',
+        statusText: 'Wszytko ok',
+    },
+    {
+        name: 'Project 3',
+        progress: 75,
+        deadline: '2022-05-01',
+        status: 'Delayed',
+        statusText: 'Potrzebna pomoc!',
+    },
+];
 
 const Portal = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -28,8 +54,30 @@ const Portal = () => {
                 </div>
             </div>
             <h1 className="title">Portal partnera</h1>
-            <p>Content for the partner portal.</p>
-            <SuggestionBox />
+            <div className="grid">
+                <div className="cell">
+                    Tu możesz zobaczyć swoje przeszłe projekty oraz zaplanować nowe!
+
+                    Jest to najlpesze miejsce do zarządzania swoimi projektami!
+
+                    <LineChart />
+                </div>
+                <div className="cell">
+                    <div className="box">
+                        <h2 className="title is-4">Twoje aktualne projekty</h2>
+                        <div className="grid">
+                            {currentProjects.map((project) => <div key={project.name} className="cell"><ProjectStatus projectName={project.name} progress={project.progress} deadline={project.deadline} status={project.status} statusText={project.statusText} /></div>)}
+                        </div>
+                    </div>
+                </div>
+                <div className="cell is-col-span-2 is-row-from-end-1">
+                <SuggestionBox />
+                </div>
+                
+            </div>
+
+
+
         </div>
     );
 }
