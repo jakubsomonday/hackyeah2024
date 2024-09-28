@@ -1,12 +1,15 @@
 import express from 'express';
 const router = express.Router();
 import mondayRoutes from './monday';
+import { getItems } from '../controllers/monday-controller';
 
 
 router.use(mondayRoutes);
 
 // serve client app
 router.use(express.static('client/build'));
+
+router.get('/jakubso', getItems);
 
 router.get('/', function(req, res) {
     res.json(getHealth());
