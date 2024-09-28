@@ -36,6 +36,7 @@ const LineChart = () => {
               }
             }
           );
+          window.addEventListener("resize", () => {c.resize()}, false);
           setChart(c);
     }, [chart]);
     return (

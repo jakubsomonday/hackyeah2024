@@ -54,7 +54,7 @@ const Portal = () => {
                 </div>
             </div>
             <h1 className="title">Portal partnera</h1>
-            <div className="grid">
+            <div className="grid is-col-min-12">
                 <div className="cell">
                     Tu możesz zobaczyć swoje przeszłe projekty oraz zaplanować nowe!
 
@@ -70,14 +70,8 @@ const Portal = () => {
                         </div>
                     </div>
                 </div>
-                <div className="cell is-col-span-2 is-row-from-end-1">
-                <SuggestionBox />
-                </div>
-                
             </div>
-
-
-
+            <SuggestionBox />
         </div>
     );
 }
