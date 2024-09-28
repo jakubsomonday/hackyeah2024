@@ -1,11 +1,13 @@
-import React from "react";
-import "./App.scss";
-import ContentSection from "./ContentSection.tsx";
-import HeroSection from "./HeroSection.tsx";
-import Navbar from "./Navbar.tsx";
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Portal from "./Portal.tsx";
 
+import ContentSection from './ContentSection.tsx';
+import HeroSection from './HeroSection.tsx';
+import Login from './Login.tsx';
+import Navbar from './Navbar.tsx';
+import Portal from './Portal.tsx';
+
+import './App.scss';
 
 const MainSections = () => {
     return (
@@ -18,28 +20,21 @@ const MainSections = () => {
 
 const App = () => {
 
+  const [isUserLeggedIn, setIsUserLeggedIn] = useState<boolean>(false)
+
   return (
     <Router>
-      <Navbar />
+      <Navbar logout={() => setIsUserLeggedIn(false)}/>
       <Routes>
-        {/* Define Routes for different components */}
         <Route path="/" element={<MainSections />} />
         <Route path="/view" element={<MainSections />} />
         <Route path="/support" element={<ContentSection />} />
-        <Route path="/portal" element={<Portal />} />
+        <Route path="/portal" element={isUserLeggedIn ? <Portal /> : <Login loginUser={() => setIsUserLeggedIn(true)} />} />
         {/* Catch-all route for 404 Not Found */}
         <Route path="*" element={<h2>Page Not Found</h2>} />
       </Routes>
     </Router>
   );
-  // return (
-  //   <div>
-  //     <Navbar />
-  //     <HeroSection />
-  //     <ContentSection />
-  //     <NGOTable />
-  //   </div>
-  // );
 };
 
 export default App;

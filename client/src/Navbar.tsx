@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({logout}: {logout: () => void}) => {
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
@@ -35,6 +35,9 @@ const Navbar = () => {
                     <div className="navbar-item">
                         <div className="field is-grouped">
                             <p className="control">
+                                <button className="button is-danger has-text-white" onClick={() => logout()}>
+                                    <i className="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                                </button>
                             </p>
                         </div>
                     </div>
