@@ -113,7 +113,7 @@ const Portal = () => {
 
                     Jest to najlpesze miejsce do zarządzania swoimi projektami!
                     <LineChart />
-                        
+
                 </div>
                 <div className="cell">
                     <div className="box">
@@ -124,7 +124,7 @@ const Portal = () => {
                     </div>
                 </div>
             </div>
-            <ProjectListWithShare projects={currentProjects} />
+            <ProjectListWithShare projects={currentProjects} onShareToFacebook={() => {}} onShareToInstagram={()=>{}} onShareToLinkedIn={()=>{}}/>
             <GenerateReport imageUrl="/static/report.webp" onGenerateReport={() => alert('Raport wygenerowany!')} />
             <SuggestionBox projects={similarProjects} />
 
