@@ -25,7 +25,7 @@ const Navbar = () => {
                         <div className="field is-grouped">
                             <p className="control">
                                 <Link to="/portal" className="button is-danger has-text-white" >
-                                    <span className="portal-button">Portal partnera</span>
+                                    <span>Portal partnera</span>
                                 </Link>
                             </p>
                         </div>
