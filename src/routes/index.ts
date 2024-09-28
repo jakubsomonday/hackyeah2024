@@ -10,9 +10,7 @@ router.use(mondayRoutes);
 router.use('/static', express.static(path.join(__dirname, '..', 'client', 'public', 'static')));
 
 router.get('/jakubso', getItems);
-router.get('/', function(req, res) {
-    res.json(getHealth());
-});
+
 router.get('/health', function(req, res) {
   res.json(getHealth());
   res.end();

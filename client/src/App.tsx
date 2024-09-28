@@ -25,6 +25,7 @@ const App = () => {
       <Routes>
         {/* Define Routes for different components */}
         <Route path="/" element={<MainSections />} />
+        <Route path="/view" element={<MainSections />} />
         <Route path="/support" element={<ContentSection />} />
         <Route path="/portal" element={<Portal />} />
         {/* Catch-all route for 404 Not Found */}
