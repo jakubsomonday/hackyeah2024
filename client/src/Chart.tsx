@@ -1,8 +1,5 @@
-
 import React, { useEffect, useState } from 'react';
-
 import Chart from 'chart.js/auto';
-// import { getRelativePosition } from 'chart.js/helpers';
 
 const data = [
     { year: 2010, count: 10 },
@@ -29,8 +26,10 @@ const LineChart = () => {
                 labels: data.map(row => row.year),
                 datasets: [
                   {
-                    label: 'Acquisitions by year',
-                    data: data.map(row => row.count)
+                    label: 'Zrealizowane projekty',
+                    data: data.map(row => row.count),
+                    backgroundColor: '#C43641',
+
                   }
                 ]
               }
@@ -40,7 +39,7 @@ const LineChart = () => {
           setChart(c);
     }, [chart]);
     return (
-        <div style={{ maxWidth: '600px'}}>
+        <div style={{ height: '100%', width: '100%' }}>
             <canvas id="chart"></canvas>
         </div>
     );

@@ -44,9 +44,9 @@ const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, 
       case 'On Track':
         return 'is-success';
       case 'Delayed':
-        return 'is-warning';
-      case 'At Risk':
         return 'is-danger';
+      case 'At Risk':
+        return 'is-warning';
       default:
         return '';
     }

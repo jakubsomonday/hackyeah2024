@@ -16,7 +16,7 @@ const GenerateReport: React.FC<GenerateReportProps> = ({ imageUrl, onGenerateRep
       <div className='content'>
         <h2 className='title is-4'>Generuj Raport</h2>
         <p>W zeszlym roku wsparles {aggregatedCount} projektów! Klikajac w ponizszy guzik mozesz wygenerowac podsumowanie projektow i twojego udzialu w nich, ktory mozesz wykorzystac w swoim raporcie ESG</p>
-        <button className='button is-primary mt-3' onClick={onGenerateReport}>Generuj PDF</button>
+        <button className='button is-danger mt-3' onClick={onGenerateReport}>Generuj PDF</button>
       </div>
     </div>
   );

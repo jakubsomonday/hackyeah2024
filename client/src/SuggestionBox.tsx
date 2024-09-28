@@ -48,7 +48,7 @@ const SuggestionBox = () => {
               { project.values.length > 0 && "Dlaczego polecamy: "}{project.values.join(', ')}
             </p>
           </div>
-            <button className='button is-primary'>{ project.altButtonText ? project.altButtonText : "Zobacz" }</button>
+            <button className='button is-danger'>{ project.altButtonText ? project.altButtonText : "Zobacz" }</button>
         </div>
       </div>
     ))}
