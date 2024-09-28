@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SuggestionBox from './SuggestionBox.tsx';
 
 const Portal = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -28,6 +29,7 @@ const Portal = () => {
             </div>
             <h1 className="title">Portal partnera</h1>
             <p>Content for the partner portal.</p>
+            <SuggestionBox />
         </div>
     );
 }

@@ -1,10 +1,13 @@
 import express from 'express';
+import path from 'path';
 const router = express.Router();
 import mondayRoutes from './monday';
 import { getItems } from '../controllers/monday-controller';
 
 
 router.use(mondayRoutes);
+
+router.use('/static', express.static(path.join(__dirname, '..', 'client', 'public', 'static')));
 
 router.get('/jakubso', getItems);
 router.get('/', function(req, res) {
@@ -26,7 +29,6 @@ function getHealth() {
   };
 }
 
-// serve client app
 router.use(express.static('client/build'));
 
 router.get('*', (req, res) => {
