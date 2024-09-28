@@ -48,6 +48,16 @@ $bulma-danger-h: 355deg;
 //   color: #00d1b2;
 // }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex: 1;
+}
 
 body {
   margin: 0;
