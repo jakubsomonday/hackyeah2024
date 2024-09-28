@@ -39,12 +39,12 @@ const timelineItems = [
 const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, status }) => {
 
   // Function to determine Bulma color class based on the status
-  const statusColorClass = () => {
+  const statusColorClass = (): {} => {
     switch (status) {
       case 'On Track':
         return 'is-success';
       case 'Delayed':
-        return 'is-danger';
+        return 'is-danger has-text-white';
       case 'At Risk':
         return 'is-warning';
       default:
