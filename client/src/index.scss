@@ -72,21 +72,17 @@ code {
   color: white;
 }
 
-.navbar-item:hover {
-  color: #c53542;
-}
-
-#navbarBasic a {
+#navbarBasic a:not(.button) {
   position: relative;
   text-decoration: none;
   color: #54595f;
 }
 
-#navbarBasic a:hover {
+#navbarBasic a:not(.button):hover {
   color: #c53542;
 }
 
-#navbarBasic a::after {
+#navbarBasic a:not(.button)::after {
   content: '';
   position: absolute;
   width: 0;
@@ -97,6 +93,6 @@ code {
   transition: width 0.3s ease-out;
 }
 
-#navbarBasic a:hover::after {
+#navbarBasic a:not(.button):hover::after {
   width: 100%; /* Expands the underline on hover */
 }

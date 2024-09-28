@@ -18,9 +18,9 @@ const Navbar = () => {
             <div id="navbarBasic" className="navbar-menu">
                 <div className="navbar-start">
                     <a className="navbar-item" href="/">O fundacji</a>
-                    <a className="navbar-item" href="/projects">Projekty</a>
-                    <a className="navbar-item" href="/partnership">Współpraca z biznesem</a>
-                    <a className="navbar-item" href="/support-us">Wspieraj z nami</a>
+                    <a className="navbar-item" href="/">Projekty</a>
+                    <a className="navbar-item" href="/">Współpraca z biznesem</a>
+                    <a className="navbar-item" href="/">Wspieraj z nami</a>
                     <div className="navbar-item">
                         <div className="field is-grouped">
                             <p className="control">
