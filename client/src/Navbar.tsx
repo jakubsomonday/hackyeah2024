@@ -35,9 +35,6 @@ const Navbar = () => {
                     <div className="navbar-item">
                         <div className="field is-grouped">
                             <p className="control">
-                                <a className="button is-danger" href="/linkedin">
-                                    <i className="fa-brands fa-linkedin" aria-hidden="true"></i>
-                                </a>
                             </p>
                         </div>
                     </div>

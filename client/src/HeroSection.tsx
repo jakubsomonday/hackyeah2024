@@ -8,7 +8,7 @@ const HeroSection = () => {
           <div className="columns is-vcentered">
             <div className="column is-half">
               <figure className="image is-4by3">
-                <img src="your-image-url" alt="Support Children and Youth" />
+                <img src="https://serdeczna.org/wp-content/uploads/2023/05/KAM7910a-scaled-1.jpeg" alt="Support Children and Youth" />
               </figure>
             </div>
             <div className="column is-half">

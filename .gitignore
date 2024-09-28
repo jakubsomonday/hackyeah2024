@@ -4,3 +4,4 @@ dist/
 client/dist
 code.tar.gz
 client/build/
+/.idea/
