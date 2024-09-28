@@ -96,3 +96,8 @@ code {
 #navbarBasic a:not(.button):hover::after {
   width: 100%; /* Expands the underline on hover */
 }
+
+footer > p {
+  text-align: center;
+  padding-bottom: 20px;
+}
