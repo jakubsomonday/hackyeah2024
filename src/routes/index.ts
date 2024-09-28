@@ -6,15 +6,10 @@ import { getItems } from '../controllers/monday-controller';
 
 router.use(mondayRoutes);
 
-// serve client app
-router.use(express.static('client/build'));
-
 router.get('/jakubso', getItems);
-
 router.get('/', function(req, res) {
     res.json(getHealth());
 });
-
 router.get('/health', function(req, res) {
   res.json(getHealth());
   res.end();
@@ -30,5 +25,12 @@ function getHealth() {
     message: 'Healthy'
   };
 }
+
+// serve client app
+router.use(express.static('client/build'));
+
+router.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'client/build/' });
+});
 
 export default router;
