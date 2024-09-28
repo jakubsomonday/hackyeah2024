@@ -68,6 +68,10 @@ code {
   padding: 36px 20px;
 }
 
+.portal-button {
+  color: white;
+}
+
 .navbar-item:hover {
   color: #c53542;
 }
@@ -76,6 +80,10 @@ code {
   position: relative;
   text-decoration: none;
   color: #54595f;
+}
+
+#navbarBasic a:hover {
+  color: #c53542;
 }
 
 #navbarBasic a::after {
