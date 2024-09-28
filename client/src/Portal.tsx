@@ -3,6 +3,7 @@ import SuggestionBox from './SuggestionBox.tsx';
 import ProjectStatus from './ProjectStatus.tsx';
 import LineChart from './Chart.tsx';
 import GenerateReport from './GenerateReport.tsx';
+import ProjectListWithShare from './ProjectListWithShare.tsx';
 
 const currentProjects = [
     {
@@ -38,6 +39,57 @@ const Portal = () => {
 
     const closeModal = () => setIsActive(false);
 
+    const currentProjects = [
+        {
+            name: 'Strefa Ucznia',
+            short_description: 'Bezpłatne korepetycje i wsparcie w odrabianiu zadań dla dzieci z trudnościami edukacyjnymi.',
+        },
+        {
+            name: 'Przestrzeń Dialogu',
+            short_description: 'Zajęcia uczące umiejętności komunikacji i rozwiązywania konfliktów w grupie rówieśniczej.',
+        },
+        {
+            name: 'Zdrowy Start',
+            short_description: 'Program promujący zdrowe nawyki żywieniowe i aktywność fizyczną wśród dzieci.',
+        },
+        {
+            name: 'Małe Rękodzieło',
+            short_description: 'Warsztaty rękodzielnicze rozwijające umiejętności manualne i kreatywność dzieci.',
+        },
+        {
+            name: 'Klub Młodego Czytelnika',
+            short_description: 'Spotkania dla dzieci wspierające rozwój czytania i miłość do książek.',
+        },
+    ];
+
+    const similarProjects = [
+        {
+            name: 'Akademia Równych Szans',
+            short_description: 'Bezpłatne zajęcia wyrównawcze dla dzieci z rodzin o niskich dochodach.',
+            image: '/static/academy.webp',
+            values: ['równość', 'edukacja', 'wsparcie', 'dostępność']
+        },
+        {
+            name: 'Klub Kreatywności Dziecięcej',
+            short_description: 'Warsztaty artystyczne i technologiczne dla dzieci z marginalizowanych środowisk.',
+            image: '/static/creativeclub.webp',
+            values: ['kreatywność', 'integracja', 'równość', 'rozwój']
+        },
+        {
+            name: 'Młodzi Odkrywcy Świata',
+            short_description: 'Zajęcia edukacyjne z przyrody i nauki dla dzieci z trudnych warunków.',
+            image: '/static/youngexplorers.webp',
+            values: ['inspiracja', 'nauka', 'zabawa', 'dostępność']
+        },
+        {
+            name: 'Twój projekt!',
+            short_description: 'Masz pomysł na projekt? Razem mozemy go zrealizować!',
+            image: '/static/question.webp',
+            values: [],
+            altButtonText: 'Zgłoś'
+        },
+    ]
+
     return (
         <div className='section'>
             <div className={`modal ${isActive ? 'is-active' : ''}`}>
@@ -72,8 +124,10 @@ const Portal = () => {
                     </div>
                 </div>
             </div>
+            <ProjectListWithShare projects={currentProjects} />
             <GenerateReport imageUrl="/static/report.webp" onGenerateReport={() => alert('Raport wygenerowany!')} />
-            <SuggestionBox />
+            <SuggestionBox projects={similarProjects} />
+
         </div>
     );
 }
