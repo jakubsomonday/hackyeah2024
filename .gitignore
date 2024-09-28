@@ -1,0 +1,6 @@
+client/node_modules/
+node_modules/
+dist/
+client/dist
+code.tar.gz
+client/build/
