@@ -62,3 +62,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navbar-item {
+  text-transform: uppercase;
+  padding: 36px 20px;
+}
+
+.navbar-item:hover {
+  color: #c53542;
+}
+
+.portal-button {
+  color: white;
+}
+
+#navbarBasic a {
+  position: relative;
+  text-decoration: none;
+  color: #54595f;
+}
+
+#navbarBasic a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px; /* Thickness of the line */
+  right: 0;
+  bottom: 0;
+  background-color: #c53542; /* The color of the underline */
+  transition: width 0.3s ease-out;
+}
+
+#navbarBasic a:hover::after {
+  width: 100%; /* Expands the underline on hover */
+}
