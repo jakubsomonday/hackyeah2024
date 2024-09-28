@@ -24,7 +24,8 @@ const SuggestionBox = () => {
             name: 'Twój projekt!',
             short_description: 'Masz pomysł na projekt? Razem mozemy go zrealizować!',
             image: '/static/question.webp',
-            values: []
+            values: [],
+            altButtonText: 'Zgłoś'
         },
     ];
 
@@ -47,7 +48,7 @@ const SuggestionBox = () => {
               { project.values.length > 0 && "Dlaczego polecamy: "}{project.values.join(', ')}
             </p>
           </div>
-            <button className='button is-primary'>Zobacz</button>
+            <button className='button is-primary'>{ project.altButtonText ? project.altButtonText : "Zobacz" }</button>
         </div>
       </div>
     ))}

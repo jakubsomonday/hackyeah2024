@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SuggestionBox from './SuggestionBox.tsx';
 import ProjectStatus from './ProjectStatus.tsx';
 import LineChart from './Chart.tsx';
+import GenerateReport from './GenerateReport.tsx';
 
 const currentProjects = [
     {
@@ -71,6 +72,7 @@ const Portal = () => {
                     </div>
                 </div>
             </div>
+            <GenerateReport imageUrl="/static/report.webp" onGenerateReport={() => alert('Raport wygenerowany!')} />
             <SuggestionBox />
         </div>
     );
