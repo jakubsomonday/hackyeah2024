@@ -32,9 +32,9 @@ const currentProjects = [
 const Portal = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
     useEffect(() => {
-        setTimeout(() => {
-            setIsActive(true);
-        }, 500);
+        // setTimeout(() => {
+        //     setIsActive(true);
+        // }, 500);
     }, []);
 
     const closeModal = () => setIsActive(false);
