@@ -69,6 +69,8 @@ interface Project {
   companies: string[];
 }
 
+const projectNameCache = new Map<string, string>();
+
 const getProjects = async (boardId: string): Promise<Project[]> => {
   let projects: Project[] = [];
   let nextPageCursor: string | null = null;
@@ -107,7 +109,6 @@ const getProjects = async (boardId: string): Promise<Project[]> => {
     nextPageCursor = board.items_page.cursor; // Update cursor to fetch the next page if available
   } while (nextPageCursor);
 
-  console.log("Fetched projects:", projects);
   return projects;
 };
 
@@ -133,9 +134,6 @@ const getBoardItems = async (boardId: string, pageCursor?: string | null): Promi
 
   try {
     const response = await mondayRequest(query);
-
-    // Log the entire response to understand what is returned
-    console.log("Raw Response:", JSON.stringify(response, null, 2));
 
     // Check the response structure
     if (!response || !response.data || !response.data.boards) {
@@ -164,20 +162,30 @@ const getLinkedCompanyIds = (boardRelation: string): string[] => {
 const getCompanyNames = async (companyIds: string[]): Promise<string[]> => {
   if (companyIds.length === 0) return [];
 
-  const query = `
-    query {
-      items (ids: [${companyIds.join(",")}]) {
-        id
-        name
+  const uncachedCompanyIds = companyIds.filter((id) => !projectNameCache.has(id));
+  if (uncachedCompanyIds.length > 0) {
+    const query = `
+      query {
+        items (ids: [${uncachedCompanyIds.join(",")}]) {
+          id
+          name
+        }
       }
-    }
-  `;
+    `;
 
-  try {
-    const response = await mondayRequest(query);
-    return response.data.items.map((item: { id: string; name: string }) => item.name);
-  } catch (error) {
-    console.error("Error fetching company names:", error);
-    return [];
+    try {
+      const response = await mondayRequest(query);
+      const items = response.data.items;
+
+      // Cache the newly fetched company names
+      items.forEach((item: { id: string; name: string }) => {
+        projectNameCache.set(item.id, item.name);
+      });
+    } catch (error) {
+      console.error("Error fetching company names:", error);
+    }
   }
+
+  // Retrieve all company names from cache
+  return companyIds.map((id) => projectNameCache.get(id) || "Unknown Company");
 };
