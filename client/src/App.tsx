@@ -19,7 +19,7 @@ const MainSections = () => {
 }
 
 const fetchCompanyProjects = async () => {
-  const response = await fetch('http://localhost:8080/jakubso?company_name=PZU%20Group');
+  const response = await fetch('/jakubso?company_name=PZU%20Group');
 
   const data = await response.json();
   return data;
@@ -37,8 +37,8 @@ const App = () => {
   }, []);
 
   console.log(projects);
-  
-  
+
+
 
   return (
     <Router>

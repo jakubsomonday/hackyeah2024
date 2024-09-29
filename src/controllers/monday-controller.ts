@@ -44,6 +44,9 @@ interface ApiResponse {
             value: string | null;
             type: string;
             label?: string;
+            label_style?: {
+              color?: string;
+            };
           }[];
         }[];
       };
@@ -68,6 +71,7 @@ interface Project {
   name: string;
   description: string | null;
   status: string | null;
+  status_color: string | null;
   tags: string | null;
   companies: string[];
 }
@@ -106,6 +110,7 @@ const getProjects = async (boardId: string): Promise<Project[]> => {
         description,
         tags,
         status: item.column_values.find((col) => col.id === 'status')?.label ?? null,
+        status_color: item.column_values.find((col) => col.id === 'status')?.label_style?.color ?? "",
         companies: companyNames,
       });
     }
@@ -132,6 +137,9 @@ const getBoardItems = async (boardId: string, pageCursor?: string | null): Promi
                 index
                 value
                 label
+                label_style {
+                  color
+                }
               }
             }
           }

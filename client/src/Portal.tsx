@@ -34,6 +34,7 @@ export interface Project {
     description: string;
     tags?: string[];
     status: string;
+    status_color: string;
 };
 
 interface PortalProps {
@@ -107,7 +108,7 @@ const Portal = ({ projects }: PortalProps) => {
                       <div className="grid">
                           {projects.filter(p => p.status !== DONE_STATUS).map((project) => <div key={project.name} className="cell"><ProjectStatus
                             projectName={project.name}
-                            status={project.status} statusText={project.status}/></div>)}
+                            status={project.status} status_color={project.status_color} statusText={project.status}/></div>)}
                             {projects.length > 0 || <div className="skeleton-block"></div>}
                             {projects.length > 0 || <div className="skeleton-block"></div>}
                             {projects.length > 0 || <div className="skeleton-block"></div>}

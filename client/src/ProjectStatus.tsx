@@ -7,6 +7,7 @@ type ProjectStatusProps = {
   progress: number; // Progress percentage (0-100)
   deadline: string; // Deadline date in "YYYY-MM-DD" format
   status: string;
+  status_color?: string;
 };
 
 const timelineItems = [
@@ -36,7 +37,7 @@ const timelineItems = [
   },
 ];
 
-const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, status }) => {
+const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, status, status_color }) => {
 
   // Function to determine Bulma color class based on the status
   const statusColorClass = (): {} => {
@@ -59,7 +60,7 @@ const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, 
         <h3 className="title is-4">{projectName}</h3>
         <div className="field">
           <label className="label">Status:</label>
-          <span className={`tag is-large ${statusColorClass()}`}>{statusText}</span>
+          <span className={`tag is-large ${statusColorClass()}`} style={{ backgroundColor: status_color }}>{statusText}</span>
         </div>
       </div>
       <div className="cell"><Timeline items={timelineItems} /></div>
