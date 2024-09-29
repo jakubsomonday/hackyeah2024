@@ -4,9 +4,7 @@ import Timeline from './Timeline.tsx';
 
 type ProjectStatusProps = {
   projectName: string;
-  progress: number; // Progress percentage (0-100)
-  deadline: string; // Deadline date in "YYYY-MM-DD" format
-  status: string;
+  statusText: string;
   status_color?: string;
 };
 
@@ -37,21 +35,7 @@ const timelineItems = [
   },
 ];
 
-const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, status, status_color }) => {
-
-  // Function to determine Bulma color class based on the status
-  const statusColorClass = (): {} => {
-    switch (status) {
-      case 'Wszystko ok':
-        return 'is-success';
-      case 'Potrzebna pomoc!':
-        return 'is-danger has-text-white';
-      case 'Pracujemy nad tym':
-        return 'is-warning';
-      default:
-        return '';
-    }
-  };
+const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, status_color }) => {
 
   return (
     <div className="box">
@@ -60,7 +44,7 @@ const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, 
         <h3 className="title is-4">{projectName}</h3>
         <div className="field">
           <label className="label">Status:</label>
-          <span className={`tag is-large ${statusColorClass()}`} style={{ backgroundColor: status_color }}>{statusText}</span>
+          <span className={`tag is-large`} style={{ backgroundColor: status_color }}>{statusText}</span>
         </div>
       </div>
       <div className="cell"><Timeline items={timelineItems} /></div>

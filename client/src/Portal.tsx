@@ -4,30 +4,6 @@ import ProjectStatus from './ProjectStatus.tsx';
 import GenerateReport from './GenerateReport.tsx';
 import ProjectListWithShare from './ProjectListWithShare.tsx';
 
-const currentProjects1 = [
-  {
-    name: 'Project 1',
-    progress: 50,
-    deadline: '2022-03-31',
-    status: 'On Track',
-    statusText: 'Wszytko ok',
-  },
-  {
-    name: 'Project 2',
-    progress: 100,
-    deadline: '2022-04-15',
-    status: 'On Track',
-    statusText: 'Wszytko ok',
-  },
-  {
-    name: 'Project 3',
-    progress: 75,
-    deadline: '2022-05-01',
-    status: 'Delayed',
-    statusText: 'Potrzebna pomoc!',
-  },
-];
-
 export interface Project {
     name: string;
     description: string;
@@ -51,6 +27,7 @@ const Portal = ({ projects, similarProjects }: PortalProps) => {
     
     const [isActive, setIsActive] = useState<boolean>(false);
     useEffect(() => {
+        // TBD: Uncomment this code to show the welcome modal on page load
         // setTimeout(() => {
         //     setIsActive(true);
         // }, 500);
@@ -82,9 +59,12 @@ const Portal = ({ projects, similarProjects }: PortalProps) => {
                   <div className="box">
                       <h2 className="title is-4">Twoje aktualne projekty</h2>
                       <div className="grid">
-                          {projects.filter(p => p.status !== DONE_STATUS).map((project) => <div key={project.name} className="cell"><ProjectStatus
-                            projectName={project.name}
-                            status={project.status} status_color={project.status_color} statusText={project.status}/></div>)}
+                          {projects.filter(p => p.status !== DONE_STATUS).map((project) => <div key={project.name} className="cell">
+                            <ProjectStatus
+                                projectName={project.name}
+                                status_color={project.status_color}
+                                statusText={project.status}/>
+                            </div>)}
                             {projects.length > 0 || <div className="skeleton-block"></div>}
                             {projects.length > 0 || <div className="skeleton-block"></div>}
                             {projects.length > 0 || <div className="skeleton-block"></div>}
