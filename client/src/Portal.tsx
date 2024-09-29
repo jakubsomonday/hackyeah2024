@@ -29,7 +29,19 @@ const currentProjects1 = [
     },
 ];
 
-const Portal = () => {
+export interface Project {
+    name: string;
+    description: string;
+    tags?: string[];
+
+};
+
+interface PortalProps {
+    projects: Project[];
+    similarProjects: Project[];
+};
+
+const Portal = ({ projects }: PortalProps) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     useEffect(() => {
         // setTimeout(() => {
@@ -39,28 +51,28 @@ const Portal = () => {
 
     const closeModal = () => setIsActive(false);
 
-    const currentProjects = [
-        {
-            name: 'Strefa Ucznia',
-            short_description: 'Bezpłatne korepetycje i wsparcie w odrabianiu zadań dla dzieci z trudnościami edukacyjnymi.',
-        },
-        {
-            name: 'Przestrzeń Dialogu',
-            short_description: 'Zajęcia uczące umiejętności komunikacji i rozwiązywania konfliktów w grupie rówieśniczej.',
-        },
-        {
-            name: 'Zdrowy Start',
-            short_description: 'Program promujący zdrowe nawyki żywieniowe i aktywność fizyczną wśród dzieci.',
-        },
-        {
-            name: 'Małe Rękodzieło',
-            short_description: 'Warsztaty rękodzielnicze rozwijające umiejętności manualne i kreatywność dzieci.',
-        },
-        {
-            name: 'Klub Młodego Czytelnika',
-            short_description: 'Spotkania dla dzieci wspierające rozwój czytania i miłość do książek.',
-        },
-    ];
+    // const currentProjects = [
+    //     {
+    //         name: 'Strefa Ucznia',
+    //         short_description: 'Bezpłatne korepetycje i wsparcie w odrabianiu zadań dla dzieci z trudnościami edukacyjnymi.',
+    //     },
+    //     {
+    //         name: 'Przestrzeń Dialogu',
+    //         short_description: 'Zajęcia uczące umiejętności komunikacji i rozwiązywania konfliktów w grupie rówieśniczej.',
+    //     },
+    //     {
+    //         name: 'Zdrowy Start',
+    //         short_description: 'Program promujący zdrowe nawyki żywieniowe i aktywność fizyczną wśród dzieci.',
+    //     },
+    //     {
+    //         name: 'Małe Rękodzieło',
+    //         short_description: 'Warsztaty rękodzielnicze rozwijające umiejętności manualne i kreatywność dzieci.',
+    //     },
+    //     {
+    //         name: 'Klub Młodego Czytelnika',
+    //         short_description: 'Spotkania dla dzieci wspierające rozwój czytania i miłość do książek.',
+    //     },
+    // ];
 
     const similarProjects = [
         {
@@ -121,7 +133,7 @@ const Portal = () => {
                   </div>
               </div>
           </div>
-          <ProjectListWithShare projects={currentProjects} onShareToFacebook={() => {
+          <ProjectListWithShare projects={projects} onShareToFacebook={() => {
           }} onShareToInstagram={() => {
           }} onShareToLinkedIn={() => {
           }}/>

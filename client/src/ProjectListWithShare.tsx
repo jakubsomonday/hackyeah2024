@@ -1,12 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
-
-interface Project {
-  name: string;
-  short_description: string;
-}
+import { Project } from './Portal';
 
 interface ProjectListWithShareProps {
   projects: Project[];
@@ -28,7 +23,7 @@ const ProjectListWithShare: React.FC<ProjectListWithShareProps> = ({
         <div key={index} className='box is-flex is-align-items-center is-justify-content-space-between mb-4'>
           <div className='is-flex-grow-1'>
             <h2 className='title is-5'>{project.name}</h2>
-            <p className='content'>{project.short_description}</p>
+            <p className='content'>{project.description}</p>
           </div>
           <div className='buttons'>
             <button
