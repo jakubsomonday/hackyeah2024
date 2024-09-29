@@ -20,7 +20,7 @@ const MainSections = () => {
 
 const App = () => {
 
-  const [isUserLeggedIn, setIsUserLeggedIn] = useState<boolean>(false)
+  const [isUserLeggedIn, setIsUserLeggedIn] = useState<boolean>(true)
 
   return (
     <Router>

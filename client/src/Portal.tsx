@@ -70,7 +70,7 @@ const Portal = () => {
             values: ['równość', 'edukacja', 'wsparcie', 'dostępność']
         },
         {
-            name: 'Klub Kreatywności Dziecięcej',
+            name: 'Klub Kreatywności',
             short_description: 'Warsztaty artystyczne i technologiczne dla dzieci z marginalizowanych środowisk.',
             image: '/static/creativeclub.webp',
             values: ['kreatywność', 'integracja', 'równość', 'rozwój']
