@@ -127,7 +127,7 @@ const Portal = () => {
           }}/>
           <div className="grid is-col-min-12">
               <div className="cell">
-                  <LineChart/>
+
               </div>
           </div>
           <GenerateReport imageUrl="/static/report.webp" onGenerateReport={() => alert('Raport wygenerowany!')}/>

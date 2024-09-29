@@ -1,5 +1,7 @@
 import React from 'react';
 import FontAwesomeIcon from '@fortawesome/fontawesome-free'
+import LineChart from './Chart.tsx';
+
 
 interface GenerateReportProps {
   imageUrl: string;
@@ -10,13 +12,15 @@ const GenerateReport: React.FC<GenerateReportProps> = ({ imageUrl, onGenerateRep
   const aggregatedCount = 10;
   return (
     <div className='box is-flex is-align-items-center'>
-      <div className='image' style={{ width: '150px', height: '150px', marginLeft: '1.5rem' }}>
+      <LineChart/>
+      <div className='image' style={{ width: '150px', height: '150px', margin: '2rem' }}>
         <i className="fa-solid fa-file-invoice is-align-items-center" style={{ fontSize: '9em' }}></i>
       </div>
       <div className='content'>
-        <h2 className='title is-4'>Generuj Raport</h2>
-        <p>W zeszlym roku wsparles {aggregatedCount} projektów! Klikajac w ponizszy guzik mozesz wygenerowac podsumowanie projektow i twojego udzialu w nich, ktory mozesz wykorzystac w swoim raporcie ESG</p>
-        <button className='button is-danger mt-3 has-text-white' onClick={onGenerateReport}>Generuj PDF</button>
+        <h2 className='title is-4'>Pobierz raport</h2>
+        <p>W zeszlym roku wsparles <b>{aggregatedCount}</b> projektów! <br/><br/>Pobierz podsumowanie projektów, które wykorzystasz w swoim raporcie ESG! Nasze raporty są zgodne z najnowszymi wytycznymi UE dot. raportowania działań CSR/ESG!</p>
+        <button className='button is-danger mt-3 has-text-white report-button' onClick={onGenerateReport}>Pobierz raport ESG</button>
+        <button className='button is-danger mt-3 has-text-white report-button' onClick={onGenerateReport}>Pobierz raport CSR</button>
       </div>
     </div>
   );
