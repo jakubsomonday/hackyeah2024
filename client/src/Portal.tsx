@@ -74,6 +74,12 @@ const Portal = ({ projects }: PortalProps) => {
             values: ['inspiracja', 'nauka', 'zabawa', 'dostępność']
         },
         {
+            name: 'Szkoła Empatii',
+            short_description: 'Warsztaty uczące empatii i budowania zdrowych relacji dla dzieci z różnych środowisk.',
+            image: '/static/empathyschool.webp',
+            values: ['empatia', 'relacje', 'integracja', 'wzajemność']
+        },
+        {
             name: 'Twój projekt!',
             short_description: 'Masz pomysł na projekt? Razem mozemy go zrealizować!',
             image: '/static/question.webp',
