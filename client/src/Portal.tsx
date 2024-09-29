@@ -91,44 +91,49 @@ const Portal = () => {
     ]
 
     return (
-        <div className='section'>
-            <div className={`modal ${isActive ? 'is-active' : ''}`}>
-                <div className="modal-background"></div>
-                <div className="modal-card">
-                    <header className="modal-card-head">
-                        <p className="modal-card-title">Witaj z powrotem!</p>
-                        <button className="delete" aria-label="close" onClick={closeModal}></button>
-                    </header>
-                    <section className="modal-card-body">
-                        <p>Dziękujemy że pomogłeś już w <b>{Math.floor(Math.random() * 10) + 1}</b> projektach w tym roku! Jesteś super❤️! W tym portalu możesz zobaczyc przeszłe projekty jak również zaplanowac nowe!</p>
-                    </section>
-                    <footer className="modal-card-foot">
-                    </footer>
-                </div>
-            </div>
-            <h1 className="title">ImpactCertified&reg; - Portal partnera</h1>
-            <div className="grid is-col-min-12">
-                <div className="cell">
-                    Tu możesz zobaczyć swoje przeszłe projekty oraz zaplanować nowe!
+      <div className='section'>
+          <div className={`modal ${isActive ? 'is-active' : ''}`}>
+              <div className="modal-background"></div>
+              <div className="modal-card">
+                  <header className="modal-card-head">
+                      <p className="modal-card-title">Witaj z powrotem!</p>
+                      <button className="delete" aria-label="close" onClick={closeModal}></button>
+                  </header>
+                  <section className="modal-card-body">
+                      <p>Dziękujemy że pomogłeś już w <b>{Math.floor(Math.random() * 10) + 1}</b> projektach w tym roku!
+                          Jesteś super❤️! W tym portalu możesz zobaczyc przeszłe projekty jak również zaplanowac nowe!
+                      </p>
+                  </section>
+                  <footer className="modal-card-foot">
+                  </footer>
+              </div>
+          </div>
+          <h1 className="title">ImpactCertified&reg; - Portal partnera</h1>
+          <div className="grid is-col-min-12">
+              <div className="cell">
+                  <div className="box">
+                      <h2 className="title is-4">Twoje aktualne projekty</h2>
+                      <div className="grid">
+                          {currentProjects1.map((project) => <div key={project.name} className="cell"><ProjectStatus
+                            projectName={project.name} progress={project.progress} deadline={project.deadline}
+                            status={project.status} statusText={project.statusText}/></div>)}
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <ProjectListWithShare projects={currentProjects} onShareToFacebook={() => {
+          }} onShareToInstagram={() => {
+          }} onShareToLinkedIn={() => {
+          }}/>
+          <div className="grid is-col-min-12">
+              <div className="cell">
+                  <LineChart/>
+              </div>
+          </div>
+          <GenerateReport imageUrl="/static/report.webp" onGenerateReport={() => alert('Raport wygenerowany!')}/>
+          <SuggestionBox projects={similarProjects}/>
 
-                    Jest to najlpesze miejsce do zarządzania swoimi projektami!
-                    <LineChart />
-
-                </div>
-                <div className="cell">
-                    <div className="box">
-                        <h2 className="title is-4">Twoje aktualne projekty</h2>
-                        <div className="grid">
-                            {currentProjects1.map((project) => <div key={project.name} className="cell"><ProjectStatus projectName={project.name} progress={project.progress} deadline={project.deadline} status={project.status} statusText={project.statusText} /></div>)}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ProjectListWithShare projects={currentProjects} onShareToFacebook={() => {}} onShareToInstagram={()=>{}} onShareToLinkedIn={()=>{}}/>
-            <GenerateReport imageUrl="/static/report.webp" onGenerateReport={() => alert('Raport wygenerowany!')} />
-            <SuggestionBox projects={similarProjects} />
-
-        </div>
+      </div>
     );
 }
 
