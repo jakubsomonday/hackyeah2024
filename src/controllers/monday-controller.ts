@@ -105,13 +105,11 @@ const getProjects = async (boardId: string): Promise<Project[]> => {
     }
 
     for (const item of board.items_page.items) {
-      const description = item.column_values.find((col) => col.id === 'text__1')?.value ?? null;
-      const tags = item.column_values.find((col) => col.id === 'text2__1')?.value ?? null;
+      const description = item.column_values.find((col) => col.id === 'text__1')?.value?.replace(/"/g, '') ?? null;
+      const tags = item.column_values.find((col) => col.id === 'text2__1')?.value?.replace(/"/g, '') ?? null;
       const boardRelation = item.column_values.find((col) => col.id === 'connect_boards__1')?.value ?? "{}";
       const linkedCompaniesIds = getLinkedCompanyIds(boardRelation);
       const companyNames = await getCompanyNames(linkedCompaniesIds); // Fetch company names
-
-      console.log(JSON.stringify(item));
 
       projects.push({
         id: item.id,

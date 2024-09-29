@@ -43,7 +43,7 @@ const App = () => {
       setProjects(data);
     });
     fetchPossibleProjects().then((data) => {
-      setPossibleProjects(data.filter((project: Project) => !project.companies.includes('PZU Group')).slice(0, 3));
+      setPossibleProjects(data.filter((project: Project) => !project.companies.includes('PZU Group')).slice(0, 4));
     });
   }, []);
 
