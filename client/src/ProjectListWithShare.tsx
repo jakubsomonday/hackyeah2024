@@ -23,7 +23,7 @@ const ProjectListWithShare: React.FC<ProjectListWithShareProps> = ({
 }) => {
   return (
     <div className='box'>
-      <h1 className='title is-4'>Udostepnij post o projekcie który wspierasz</h1>
+      <h1 className='title is-4'>Podziel się postem o projekcie, który wspierasz!</h1>
       {projects.map((project, index) => (
         <div key={index} className='box is-flex is-align-items-center is-justify-content-space-between mb-4'>
           <div className='is-flex-grow-1'>
