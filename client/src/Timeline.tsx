@@ -19,12 +19,12 @@ const Timeline: React.FC<TimelineProps> = ({ items }) => {
                 <div className="grid is-row-gap-0">
                     {items.map((item, index) => (
                         <>
-                            <div className="cell">
+                            <div key={item.title} className="cell">
                                 <div className="timeline-content">
                                     <p>{item.title}</p>
                                 </div>
                             </div>
-                            <div className="cell">
+                            <div className="cell" key={`${item.title}-data`}>
                                 <div className="level">
                                     <p className="has-text-grey">{item.date}</p>
                                     <span className={`icon has-text-info`}>

@@ -43,6 +43,7 @@ interface ApiResponse {
             id: string;
             value: string | null;
             type: string;
+            label?: string;
           }[];
         }[];
       };
@@ -66,6 +67,7 @@ interface Project {
   id: string;
   name: string;
   description: string | null;
+  status: string | null;
   tags: string | null;
   companies: string[];
 }
@@ -97,12 +99,14 @@ const getProjects = async (boardId: string): Promise<Project[]> => {
       const boardRelation = item.column_values.find((col) => col.id === 'connect_boards__1')?.value ?? "{}";
       const linkedCompaniesIds = getLinkedCompanyIds(boardRelation);
       const companyNames = await getCompanyNames(linkedCompaniesIds); // Fetch company names
+      console.log(item);
 
       projects.push({
         id: item.id,
         name: item.name,
         description,
         tags,
+        status: item.column_values.find((col) => col.id === 'status')?.label ?? null,
         companies: companyNames,
       });
     }
@@ -125,6 +129,11 @@ const getBoardItems = async (boardId: string, pageCursor?: string | null): Promi
               id
               value
               type
+              ... on StatusValue {
+                index
+                value
+                label
+              }
             }
           }
           cursor

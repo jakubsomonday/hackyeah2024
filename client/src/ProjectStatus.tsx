@@ -6,7 +6,7 @@ type ProjectStatusProps = {
   projectName: string;
   progress: number; // Progress percentage (0-100)
   deadline: string; // Deadline date in "YYYY-MM-DD" format
-  status: 'On Track' | 'Delayed' | 'At Risk'; // Status of the project
+  status: string;
 };
 
 const timelineItems = [

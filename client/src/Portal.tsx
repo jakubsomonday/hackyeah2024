@@ -33,7 +33,7 @@ export interface Project {
     name: string;
     description: string;
     tags?: string[];
-
+    status: string;
 };
 
 interface PortalProps {
@@ -126,14 +126,14 @@ const Portal = ({ projects }: PortalProps) => {
                   <div className="box">
                       <h2 className="title is-4">Twoje aktualne projekty</h2>
                       <div className="grid">
-                          {currentProjects1.map((project) => <div key={project.name} className="cell"><ProjectStatus
-                            projectName={project.name} progress={project.progress} deadline={project.deadline}
-                            status={project.status} statusText={project.statusText}/></div>)}
+                          {projects.filter(p => p.status !== 'Done').map((project) => <div key={project.name} className="cell"><ProjectStatus
+                            projectName={project.name}
+                            status={project.status} statusText={project.status}/></div>)}
                       </div>
                   </div>
               </div>
           </div>
-          <ProjectListWithShare projects={projects} onShareToFacebook={() => {
+          <ProjectListWithShare projects={projects.filter(p => p.status === 'Done')} onShareToFacebook={() => {
           }} onShareToInstagram={() => {
           }} onShareToLinkedIn={() => {
           }}/>
