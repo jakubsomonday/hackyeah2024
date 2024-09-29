@@ -5,7 +5,7 @@ import ContentSection from './ContentSection.tsx';
 import HeroSection from './HeroSection.tsx';
 import Login from './Login.tsx';
 import Navbar from './Navbar.tsx';
-import Portal from './Portal.tsx';
+import Portal, { Project } from './Portal.tsx';
 
 import './App.scss';
 
@@ -25,20 +25,29 @@ const fetchCompanyProjects = async () => {
   return data;
 }
 
+const fetchPossibleProjects = async () => {
+  const response = await fetch('/jakubso');
+
+  const data = await response.json();
+  return data;
+}
+
 const App = () => {
 
   const [isUserLeggedIn, setIsUserLeggedIn] = useState<boolean>(true);
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [possibleProjects, setPossibleProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     fetchCompanyProjects().then((data) => {
       setProjects(data);
     });
+    fetchPossibleProjects().then((data) => {
+      setPossibleProjects(data.filter((project: Project) => !project.companies.includes('PZU Group')).slice(0, 3));
+    });
   }, []);
 
   console.log(projects);
-
-
 
   return (
     <Router>
@@ -47,7 +56,7 @@ const App = () => {
         <Route path="/" element={<MainSections />} />
         <Route path="/view" element={<MainSections />} />
         <Route path="/support" element={<ContentSection />} />
-        <Route path="/portal" element={isUserLeggedIn ? <Portal projects={projects}/> : <Login loginUser={() => setIsUserLeggedIn(true)} />} />
+        <Route path="/portal" element={isUserLeggedIn ? <Portal projects={projects} similarProjects={possibleProjects}/> : <Login loginUser={() => setIsUserLeggedIn(true)} />} />
         {/* Catch-all route for 404 Not Found */}
         <Route path="*" element={<h2>Page Not Found</h2>} />
       </Routes>

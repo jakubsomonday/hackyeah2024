@@ -48,6 +48,9 @@ interface ApiResponse {
               color?: string;
             };
           }[];
+          assets: {
+            public_url: string;
+          }[];
         }[];
       };
     }[];
@@ -63,6 +66,9 @@ export async function getItems(req, res) {
 
 export async function getCompanyProjects(company_name) {
   let projects = await getProjects(PROJECTS_BOARD_ID);
+  if (!company_name) {
+    return projects;
+  }
   return projects.filter((project) => project.companies.includes(company_name));
 }
 
@@ -74,6 +80,7 @@ interface Project {
   status_color: string | null;
   tags: string | null;
   companies: string[];
+  logo: string | null;
 }
 
 const projectNameCache = new Map<string, string>();
@@ -104,6 +111,8 @@ const getProjects = async (boardId: string): Promise<Project[]> => {
       const linkedCompaniesIds = getLinkedCompanyIds(boardRelation);
       const companyNames = await getCompanyNames(linkedCompaniesIds); // Fetch company names
 
+      console.log(JSON.stringify(item));
+
       projects.push({
         id: item.id,
         name: item.name,
@@ -112,6 +121,7 @@ const getProjects = async (boardId: string): Promise<Project[]> => {
         status: item.column_values.find((col) => col.id === 'status')?.label ?? null,
         status_color: item.column_values.find((col) => col.id === 'status')?.label_style?.color ?? "",
         companies: companyNames,
+        logo: item.assets.length > 0 ? item.assets[0].public_url : null,
       });
     }
 
@@ -142,6 +152,9 @@ const getBoardItems = async (boardId: string, pageCursor?: string | null): Promi
                 }
               }
             }
+            assets {
+              public_url
+            }
           }
           cursor
         }
@@ -154,6 +167,8 @@ const getBoardItems = async (boardId: string, pageCursor?: string | null): Promi
 
     // Check the response structure
     if (!response || !response.data || !response.data.boards) {
+      console.log(response);
+      
       throw new Error("Invalid response structure");
     }
 
