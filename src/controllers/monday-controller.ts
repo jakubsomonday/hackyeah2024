@@ -99,7 +99,6 @@ const getProjects = async (boardId: string): Promise<Project[]> => {
       const boardRelation = item.column_values.find((col) => col.id === 'connect_boards__1')?.value ?? "{}";
       const linkedCompaniesIds = getLinkedCompanyIds(boardRelation);
       const companyNames = await getCompanyNames(linkedCompaniesIds); // Fetch company names
-      console.log(item);
 
       projects.push({
         id: item.id,

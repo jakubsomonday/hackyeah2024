@@ -41,6 +41,8 @@ interface PortalProps {
     similarProjects: Project[];
 };
 
+const DONE_STATUS = 'Zrobione';
+
 const Portal = ({ projects }: PortalProps) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     useEffect(() => {
@@ -50,29 +52,6 @@ const Portal = ({ projects }: PortalProps) => {
     }, []);
 
     const closeModal = () => setIsActive(false);
-
-    // const currentProjects = [
-    //     {
-    //         name: 'Strefa Ucznia',
-    //         short_description: 'Bezpłatne korepetycje i wsparcie w odrabianiu zadań dla dzieci z trudnościami edukacyjnymi.',
-    //     },
-    //     {
-    //         name: 'Przestrzeń Dialogu',
-    //         short_description: 'Zajęcia uczące umiejętności komunikacji i rozwiązywania konfliktów w grupie rówieśniczej.',
-    //     },
-    //     {
-    //         name: 'Zdrowy Start',
-    //         short_description: 'Program promujący zdrowe nawyki żywieniowe i aktywność fizyczną wśród dzieci.',
-    //     },
-    //     {
-    //         name: 'Małe Rękodzieło',
-    //         short_description: 'Warsztaty rękodzielnicze rozwijające umiejętności manualne i kreatywność dzieci.',
-    //     },
-    //     {
-    //         name: 'Klub Młodego Czytelnika',
-    //         short_description: 'Spotkania dla dzieci wspierające rozwój czytania i miłość do książek.',
-    //     },
-    // ];
 
     const similarProjects = [
         {
@@ -126,14 +105,17 @@ const Portal = ({ projects }: PortalProps) => {
                   <div className="box">
                       <h2 className="title is-4">Twoje aktualne projekty</h2>
                       <div className="grid">
-                          {projects.filter(p => p.status !== 'Done').map((project) => <div key={project.name} className="cell"><ProjectStatus
+                          {projects.filter(p => p.status !== DONE_STATUS).map((project) => <div key={project.name} className="cell"><ProjectStatus
                             projectName={project.name}
                             status={project.status} statusText={project.status}/></div>)}
+                            {projects.length > 0 || <div className="skeleton-block"></div>}
+                            {projects.length > 0 || <div className="skeleton-block"></div>}
+                            {projects.length > 0 || <div className="skeleton-block"></div>}
                       </div>
                   </div>
               </div>
           </div>
-          <ProjectListWithShare projects={projects.filter(p => p.status === 'Done')} onShareToFacebook={() => {
+          <ProjectListWithShare projects={projects.filter(p => p.status === DONE_STATUS)} onShareToFacebook={() => {
           }} onShareToInstagram={() => {
           }} onShareToLinkedIn={() => {
           }}/>

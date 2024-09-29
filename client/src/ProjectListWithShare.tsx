@@ -76,7 +76,10 @@ const ProjectListWithShare: React.FC<ProjectListWithShareProps> = ({
             </button>
           </div>
         </div>
-      )) : <div className="skeleton-block" />}
+      )) : <div />}
+      {(projects.length > 0) || <div className="skeleton-block"></div>}
+      {(projects.length > 0) || <div className="skeleton-block"></div>}
+      {(projects.length > 0) || <div className="skeleton-block"></div>}
     </div>
   );
 };

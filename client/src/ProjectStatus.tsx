@@ -41,11 +41,11 @@ const ProjectStatus: React.FC<ProjectStatusProps> = ({ projectName, statusText, 
   // Function to determine Bulma color class based on the status
   const statusColorClass = (): {} => {
     switch (status) {
-      case 'On Track':
+      case 'Wszystko ok':
         return 'is-success';
-      case 'Delayed':
+      case 'Potrzebna pomoc!':
         return 'is-danger has-text-white';
-      case 'At Risk':
+      case 'Pracujemy nad tym':
         return 'is-warning';
       default:
         return '';
