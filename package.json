@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "license": "UNLICENSED",
   "scripts": {
-    "dev-server": "npm run stop && npm run client-build && concurrently \"ts-node-dev --watch ./.env ./src/app.ts\" \"npm run expose\"",
-    "start-server": "DEV=true ts-node-dev --watch ./.env ./src/app.ts",
+    "start-server": "concurrently \"DEV=true ts-node-dev --watch ./.env ./src/app.ts\" \"cd client && npm run dev\"",
     "build": "tsc",
     "start": "node ./dist/app.js",
     "expose": "mapps tunnel:create -p 8080",
