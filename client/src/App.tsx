@@ -34,7 +34,7 @@ const fetchPossibleProjects = async () => {
 
 const App = () => {
 
-  const [isUserLeggedIn, setIsUserLeggedIn] = useState<boolean>(true);
+  const [isUserLeggedIn, setIsUserLeggedIn] = useState<boolean>(false);
   const [projects, setProjects] = useState<Project[]>([]);
   const [possibleProjects, setPossibleProjects] = useState<Project[]>([]);
 
