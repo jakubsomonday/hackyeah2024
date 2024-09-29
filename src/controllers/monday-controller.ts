@@ -35,6 +35,7 @@ interface ApiResponse {
   data: {
     boards: {
       items_page: {
+        cursor?: string | null;
         items: {
           id: string;
           name: string;
@@ -73,7 +74,7 @@ const projectNameCache = new Map<string, string>();
 
 const getProjects = async (boardId: string): Promise<Project[]> => {
   let projects: Project[] = [];
-  let nextPageCursor: string | null = null;
+  let nextPageCursor: string | undefined | null = null;
 
   do {
     const response = await getBoardItems(boardId, nextPageCursor);
