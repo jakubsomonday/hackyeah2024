@@ -106,7 +106,7 @@ const Portal = () => {
                     </footer>
                 </div>
             </div>
-            <h1 className="title">Portal partnera</h1>
+            <h1 className="title">ImpactCertified&reg; - Portal partnera</h1>
             <div className="grid is-col-min-12">
                 <div className="cell">
                     Tu możesz zobaczyć swoje przeszłe projekty oraz zaplanować nowe!
