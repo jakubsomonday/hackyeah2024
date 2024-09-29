@@ -5,7 +5,7 @@ import LineChart from './Chart.tsx';
 import GenerateReport from './GenerateReport.tsx';
 import ProjectListWithShare from './ProjectListWithShare.tsx';
 
-const currentProjects = [
+const currentProjects1 = [
     {
         name: 'Project 1',
         progress: 50,
@@ -119,7 +119,7 @@ const Portal = () => {
                     <div className="box">
                         <h2 className="title is-4">Twoje aktualne projekty</h2>
                         <div className="grid">
-                            {currentProjects.map((project) => <div key={project.name} className="cell"><ProjectStatus projectName={project.name} progress={project.progress} deadline={project.deadline} status={project.status} statusText={project.statusText} /></div>)}
+                            {currentProjects1.map((project) => <div key={project.name} className="cell"><ProjectStatus projectName={project.name} progress={project.progress} deadline={project.deadline} status={project.status} statusText={project.statusText} /></div>)}
                         </div>
                     </div>
                 </div>
