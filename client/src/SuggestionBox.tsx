@@ -15,7 +15,7 @@ interface SuggestionBoxProps {
 const SuggestionBox: React.FC<SuggestionBoxProps> = ({ projects }) => {
   return (
     <div className="suggestion-box box">
-      <h2 className="title is-4">Projekty które możesz wesprzeć</h2>
+      <h2 className="title is-4">Impact Link - Projekty które możesz wesprzeć</h2>
       <div className="suggestion-list columns is-multiline">
         {projects.map((project, index) => (
           <div key={index} className="suggestion-item column is-one-fifth">

@@ -1,32 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import SuggestionBox from './SuggestionBox.tsx';
 import ProjectStatus from './ProjectStatus.tsx';
-import LineChart from './Chart.tsx';
 import GenerateReport from './GenerateReport.tsx';
 import ProjectListWithShare from './ProjectListWithShare.tsx';
 
 const currentProjects1 = [
-    {
-        name: 'Project 1',
-        progress: 50,
-        deadline: '2022-03-31',
-        status: 'On Track',
-        statusText: 'Wszytko ok',
-    },
-    {
-        name: 'Project 2',
-        progress: 100,
-        deadline: '2022-04-15',
-        status: 'On Track',
-        statusText: 'Wszytko ok',
-    },
-    {
-        name: 'Project 3',
-        progress: 75,
-        deadline: '2022-05-01',
-        status: 'Delayed',
-        statusText: 'Potrzebna pomoc!',
-    },
+  {
+    name: 'Project 1',
+    progress: 50,
+    deadline: '2022-03-31',
+    status: 'On Track',
+    statusText: 'Wszytko ok',
+  },
+  {
+    name: 'Project 2',
+    progress: 100,
+    deadline: '2022-04-15',
+    status: 'On Track',
+    statusText: 'Wszytko ok',
+  },
+  {
+    name: 'Project 3',
+    progress: 75,
+    deadline: '2022-05-01',
+    status: 'Delayed',
+    statusText: 'Potrzebna pomoc!',
+  },
 ];
 
 export interface Project {
@@ -38,8 +37,8 @@ export interface Project {
 };
 
 interface PortalProps {
-    projects: Project[];
-    similarProjects: Project[];
+  projects: Project[];
+  similarProjects: Project[];
 };
 
 const DONE_STATUS = 'Zrobione';
@@ -52,7 +51,7 @@ const Portal = ({ projects }: PortalProps) => {
         // }, 500);
     }, []);
 
-    const closeModal = () => setIsActive(false);
+  const closeModal = () => setIsActive(false);
 
     const similarProjects = [
         {
@@ -129,13 +128,13 @@ const Portal = ({ projects }: PortalProps) => {
           <div className="grid is-col-min-12">
               <div className="cell">
 
-              </div>
-          </div>
-          <GenerateReport imageUrl="/static/report.webp" onGenerateReport={() => alert('Raport wygenerowany!')}/>
-          <SuggestionBox projects={similarProjects}/>
-
+        </div>
       </div>
-    );
+      <GenerateReport imageUrl="/static/report.webp" onGenerateReport={() => alert('Raport wygenerowany!')}/>
+      <SuggestionBox projects={similarProjects}/>
+
+    </div>
+  );
 }
 
 export default Portal;

@@ -39,7 +39,7 @@ const LineChart = () => {
           setChart(c);
     }, [chart]);
     return (
-        <div style={{ height: '100%', width: '100%' }}>
+        <div className="chart-wrapper" style={{ height: '100%', width: '100%'}}>
             <canvas id="chart"></canvas>
         </div>
     );
