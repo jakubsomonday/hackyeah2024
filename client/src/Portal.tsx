@@ -109,7 +109,7 @@ const Portal = ({ projects }: PortalProps) => {
           <div className="grid is-col-min-12">
               <div className="cell">
                   <div className="box">
-                      <h2 className="title is-4">Twoje aktualne projekty</h2>
+                      <h2 className="title is-4">Impact Flow - Twoje aktualne projekty</h2>
                       <div className="grid">
                           {projects.filter(p => p.status !== DONE_STATUS).map((project) => <div key={project.name} className="cell"><ProjectStatus
                             projectName={project.name}
